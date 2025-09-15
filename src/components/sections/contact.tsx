@@ -1,6 +1,5 @@
 import { Phone, Mail, MapPin, Twitter, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import Map from "@/components/map";
 
 export default function ContactSection() {
   return (
@@ -14,7 +13,7 @@ export default function ContactSection() {
             We&apos;d love to hear from you. Plan your next trip with us!
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8">
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -58,9 +57,6 @@ export default function ContactSection() {
                     <Linkedin className="h-6 w-6" />
                 </Link>
             </div>
-          </div>
-          <div className="overflow-hidden rounded-lg">
-            <Map />
           </div>
         </div>
       </div>
