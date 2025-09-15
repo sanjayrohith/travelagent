@@ -4,14 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Clock, Tag } from "lucide-react";
 import type { Package } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import type { BookingItem } from "@/app/page";
 
 type PackageCardProps = {
   package: Package;
-  onBookNow: (item: BookingItem) => void;
+  onSelectPackage: () => void;
 };
 
-export default function PackageCard({ package: pkg, onBookNow }: PackageCardProps) {
+export default function PackageCard({ package: pkg, onSelectPackage }: PackageCardProps) {
   const image = PlaceHolderImages.find((img) => img.id === pkg.imageId);
 
   return (
@@ -45,10 +44,10 @@ export default function PackageCard({ package: pkg, onBookNow }: PackageCardProp
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Button
-          onClick={() => onBookNow({ id: pkg.id, name: pkg.title, type: "Package" })}
+          onClick={onSelectPackage}
           className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
         >
-          Book Now
+          Explore
         </Button>
       </CardFooter>
     </Card>

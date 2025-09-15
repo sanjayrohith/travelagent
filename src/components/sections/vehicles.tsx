@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { vehicles } from "@/lib/data";
 import VehicleCard from "@/components/vehicle-card";
 import type { BookingItem } from "@/app/page";
@@ -6,9 +7,9 @@ type VehiclesSectionProps = {
   onBookNow: (item: BookingItem) => void;
 };
 
-export default function VehiclesSection({ onBookNow }: VehiclesSectionProps) {
+const VehiclesSection = forwardRef<HTMLElement, VehiclesSectionProps>(({ onBookNow }, ref) => {
   return (
-    <section id="vehicles" className="bg-background py-12 md:py-24">
+    <section id="vehicles" ref={ref} className="bg-muted py-12 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-8 text-center md:mb-12">
           <h2 className="font-headline text-3xl font-bold tracking-tight md:text-4xl">
@@ -26,4 +27,8 @@ export default function VehiclesSection({ onBookNow }: VehiclesSectionProps) {
       </div>
     </section>
   );
-}
+});
+
+VehiclesSection.displayName = "VehiclesSection";
+
+export default VehiclesSection;
