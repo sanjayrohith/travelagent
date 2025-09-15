@@ -19,6 +19,42 @@
       "imageHint": "shimla hills"
     },
     {
+      "id": "manali-day1",
+      "description": "A bustling market street in Old Manali.",
+      "imageUrl": "https://picsum.photos/seed/manali-market/600/400",
+      "imageHint": "manali market"
+    },
+    {
+      "id": "manali-day2",
+      "description": "A car driving through the snowy Rohtang Pass.",
+      "imageUrl": "https://picsum.photos/seed/rohtang-pass/600/400",
+      "imageHint": "rohtang pass"
+    },
+    {
+      "id": "manali-day3",
+      "description": "Paragliding over the beautiful Solang Valley.",
+      "imageUrl": "https://picsum.photos/seed/solang-valley/600/400",
+      "imageHint": "solang valley"
+    },
+    {
+      "id": "shimla-day1",
+      "description": "The iconic Christ Church on Shimla's Mall Road.",
+      "imageUrl": "https://picsum.photos/seed/shimla-church/600/400",
+      "imageHint": "shimla church"
+    },
+    {
+      "id": "shimla-day2",
+      "description": "Children enjoying a ride at an amusement park in Kufri.",
+      "imageUrl": "https://picsum.photos/seed/kufri-park/600/400",
+      "imageHint": "amusement park"
+    },
+    {
+      "id": "shimla-day3",
+      "description": "A serene view of the hills and trees in Chail.",
+      "imageUrl": "https://picsum.photos/seed/chail-hills/600/400",
+      "imageHint": "chail hills"
+    },
+    {
       "id": "accom-maldives",
       "description": "An overwater bungalow in the Maldives with crystal clear water.",
       "imageUrl": "https://picsum.photos/seed/maldives/600/400",

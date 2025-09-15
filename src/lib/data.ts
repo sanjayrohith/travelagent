@@ -2,6 +2,7 @@ export type PackageDay = {
   day: number;
   title: string;
   activities: string;
+  imageId: string;
 };
 
 export type Package = {
@@ -37,9 +38,9 @@ export const packages: Package[] = [
     duration: '3 Days',
     price: 500,
     itinerary: [
-      { day: 1, title: "Arrival in Manali", activities: 'Mall Road, Old Manali, Hadimba Temple.' },
-      { day: 2, title: "Adventure Day", activities: 'Rohtang Pass, Atal Tunnel, Koksar.' },
-      { day: 3, title: "Scenic Views", activities: 'Solang Valley.' },
+      { day: 1, title: "Arrival in Manali", activities: 'Mall Road, Old Manali, Hadimba Temple.', imageId: 'manali-day1' },
+      { day: 2, title: "Adventure Day", activities: 'Rohtang Pass, Atal Tunnel, Koksar.', imageId: 'manali-day2' },
+      { day: 3, title: "Scenic Views", activities: 'Solang Valley.', imageId: 'manali-day3' },
     ],
   },
   {
@@ -49,9 +50,9 @@ export const packages: Package[] = [
     duration: '3 Days',
     price: 450,
     itinerary: [
-        { day: 1, title: "Shimla Sightseeing", activities: 'Shimla Mall Road, Naldhera, President House.' },
-        { day: 2, title: "Fun and Parks", activities: "Kufri Fun Park, Children's Activity." },
-        { day: 3, title: "Day Trip to Chail", activities: 'Explore the serene town of Chail.' },
+        { day: 1, title: "Shimla Sightseeing", activities: 'Shimla Mall Road, Naldhera, President House.', imageId: 'shimla-day1' },
+        { day: 2, title: "Fun and Parks", activities: "Kufri Fun Park, Children's Activity.", imageId: 'shimla-day2' },
+        { day: 3, title: "Day Trip to Chail", activities: 'Explore the serene town of Chail.', imageId: 'shimla-day3' },
     ],
   },
 ];

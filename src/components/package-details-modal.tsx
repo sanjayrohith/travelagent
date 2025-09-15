@@ -2,8 +2,11 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import type { Package } from "@/lib/data";
+import type { Package, PackageDay } from "@/lib/data";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Card, CardContent } from "@/components/ui/card";
 
 type PackageDetailsModalProps = {
   isOpen: boolean;
@@ -11,6 +14,30 @@ type PackageDetailsModalProps = {
   package: Package | null;
   onBookNow: () => void;
 };
+
+const ItineraryDay = ({ day }: { day: PackageDay }) => {
+  const image = PlaceHolderImages.find((img) => img.id === day.imageId);
+
+  return (
+    <Card className="overflow-hidden">
+      {image && (
+        <div className="relative h-48 w-full">
+          <Image
+            src={image.imageUrl}
+            alt={day.title}
+            fill
+            className="object-cover"
+            data-ai-hint={image.imageHint}
+          />
+        </div>
+      )}
+      <CardContent className="p-4">
+        <h3 className="font-headline text-lg font-semibold">Day {day.day}: {day.title}</h3>
+        <p className="text-muted-foreground mt-2 text-sm">{day.activities}</p>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default function PackageDetailsModal({ isOpen, onOpenChange, package: pkg, onBookNow }: PackageDetailsModalProps) {
   if (!pkg) return null;
@@ -28,10 +55,7 @@ export default function PackageDetailsModal({ isOpen, onOpenChange, package: pkg
               {pkg.itinerary.map((day) => (
                 <CarouselItem key={day.day}>
                   <div className="p-1">
-                    <div className="rounded-lg border bg-card text-card-foreground p-6 h-48 flex flex-col justify-center">
-                      <h3 className="font-headline text-lg font-semibold">Day {day.day}: {day.title}</h3>
-                      <p className="text-muted-foreground mt-2 text-sm">{day.activities}</p>
-                    </div>
+                    <ItineraryDay day={day} />
                   </div>
                 </CarouselItem>
               ))}
