@@ -1,10 +1,16 @@
+export type PackageDay = {
+  day: number;
+  title: string;
+  activities: string;
+};
+
 export type Package = {
   id: string;
   imageId: string;
   title: string;
-  description:string;
   duration: string;
   price: number;
+  itinerary: PackageDay[];
 };
 
 export type Accommodation = {
@@ -28,17 +34,25 @@ export const packages: Package[] = [
     id: 'pkg1',
     imageId: 'package-manali',
     title: 'Manali Package',
-    description: 'Day 1: Mall Road, Old Manali, Hadimba Temple. Day 2: Rohtang Pass, Atal Tunnel, Koksar. Day 3: Solang Valley.',
     duration: '3 Days',
     price: 500,
+    itinerary: [
+      { day: 1, title: "Arrival in Manali", activities: 'Mall Road, Old Manali, Hadimba Temple.' },
+      { day: 2, title: "Adventure Day", activities: 'Rohtang Pass, Atal Tunnel, Koksar.' },
+      { day: 3, title: "Scenic Views", activities: 'Solang Valley.' },
+    ],
   },
   {
     id: 'pkg2',
     imageId: 'package-shimla',
     title: 'Shimla Package',
-    description: 'Day 1: Shimla Mall Road, Naldhera, President House. Day 2: Kufri Fun Park, Children\'s Activity. Day 3: Chail.',
     duration: '3 Days',
     price: 450,
+    itinerary: [
+        { day: 1, title: "Shimla Sightseeing", activities: 'Shimla Mall Road, Naldhera, President House.' },
+        { day: 2, title: "Fun and Parks", activities: "Kufri Fun Park, Children's Activity." },
+        { day: 3, title: "Day Trip to Chail", activities: 'Explore the serene town of Chail.' },
+    ],
   },
 ];
 
