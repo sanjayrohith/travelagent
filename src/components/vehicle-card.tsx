@@ -9,22 +9,27 @@ import type { BookingItem } from "@/app/page";
 type VehicleCardProps = {
   vehicle: Vehicle;
   onBookNow: (item: BookingItem) => void;
+  compact?: boolean;
 };
 
-export default function VehicleCard({ vehicle, onBookNow }: VehicleCardProps) {
+export default function VehicleCard({ vehicle, onBookNow, compact = false }: VehicleCardProps) {
   const image = PlaceHolderImages.find((img) => img.id === vehicle.imageId);
 
   return (
     <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg">
       <CardHeader className="p-0">
-        <div className="relative h-48 w-full">
+        <div className={`relative w-full ${compact ? "h-32" : "h-48"}`}>
           {image && (
             <Image
               src={image.imageUrl}
               alt={vehicle.name}
               fill
               className={
-                vehicle.imageId === "vehicle-ertiga"
+                compact
+                  ? "object-contain"
+                  : vehicle.imageId === "vehicle-tempo-12" || vehicle.imageId === "vehicle-tempo-17" || vehicle.imageId === "vehicle-sedan"
+                  ? "object-contain"
+                  : vehicle.imageId === "vehicle-ertiga"
                   ? "object-contain w-[calc(100%+10px)] h-[calc(100%+10px)]"
                   : vehicle.imageId === "vehicle-innova"
                   ? "object-contain w-[calc(100%-20px)] h-[calc(100%-20px)]"
@@ -35,18 +40,18 @@ export default function VehicleCard({ vehicle, onBookNow }: VehicleCardProps) {
           )}
         </div>
       </CardHeader>
-      <CardContent className="flex-grow p-4">
-        <CardTitle className="mb-2 font-headline text-xl">{vehicle.name}</CardTitle>
-        <CardDescription>{vehicle.description}</CardDescription>
-        <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+      <CardContent className={`flex-grow ${compact ? "p-3" : "p-4"}`}>
+        <CardTitle className={`mb-2 font-headline ${compact ? "text-base" : "text-xl"}`}>{vehicle.name}</CardTitle>
+        <CardDescription className={`${compact ? "text-sm" : ""}`}>{vehicle.description}</CardDescription>
+        <div className={`mt-3 flex items-center gap-2 ${compact ? "text-xs" : "text-sm"} text-muted-foreground`}>
             <Users className="h-4 w-4" />
             <span>{vehicle.capacity}</span>
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className={`${compact ? "p-3" : "p-4"} pt-0`}>
         <Button
           onClick={() => onBookNow({ id: vehicle.id, name: vehicle.name, type: "Vehicle" })}
-          className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+          className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${compact ? "h-9 text-sm" : ""}`}
         >
           Book Now
         </Button>

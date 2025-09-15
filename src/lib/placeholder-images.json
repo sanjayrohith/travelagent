@@ -99,13 +99,13 @@
     {
       "id": "vehicle-tempo-12",
       "description": "A 12-seater Tempo Traveller van.",
-      "imageUrl": "https://picsum.photos/seed/white-van/600/400",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF624oWVt6Bg9hQ3a9y9b53g47oCcTyZacnA&s",
       "imageHint": "white van"
     },
     {
       "id": "vehicle-tempo-17",
       "description": "A 17-seater Tempo Traveller van.",
-      "imageUrl": "https://picsum.photos/seed/large-van/600/400",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfibSP8F7CgZ4Rq5gkOEW4wgsx6BxH9Lji1g&s",
       "imageHint": "large van"
     }
   ]

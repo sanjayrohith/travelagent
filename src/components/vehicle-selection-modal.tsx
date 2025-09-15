@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext } from "@/components/ui/carousel";
 import { vehicles } from "@/lib/data";
 import VehicleCard from "@/components/vehicle-card";
 import type { BookingItem } from "@/app/page";
@@ -25,17 +25,21 @@ export default function VehicleSelectionModal({ isOpen, onOpenChange, onBookNow 
             opts={{
               align: "start",
             }}
-            className="w-full"
+            className="w-full relative"
           >
             <CarouselContent>
               {vehicles.map((vehicle) => (
-                <CarouselItem key={vehicle.id} className="basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2">
+                <CarouselItem
+                  key={vehicle.id}
+                  className="flex justify-center items-center w-full"
+                >
+                  <div className="w-full max-w-full px-0 mx-auto">
                     <VehicleCard vehicle={vehicle} onBookNow={onBookNow} />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-50 bg-white shadow-lg border border-gray-200" />
           </Carousel>
         </div>
       </DialogContent>
