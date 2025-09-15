@@ -7,28 +7,16 @@
       "imageHint": "tropical beach"
     },
     {
-      "id": "package-paris",
-      "description": "The Eiffel Tower in Paris at sunset.",
-      "imageUrl": "https://picsum.photos/seed/paris/600/400",
-      "imageHint": "eiffel tower"
+      "id": "package-manali",
+      "description": "A beautiful view of the mountains in Manali.",
+      "imageUrl": "https://picsum.photos/seed/manali/600/400",
+      "imageHint": "manali mountains"
     },
     {
-      "id": "package-tokyo",
-      "description": "A bustling street in Tokyo at night with neon signs.",
-      "imageUrl": "https://picsum.photos/seed/tokyo/600/400",
-      "imageHint": "tokyo street"
-    },
-    {
-      "id": "package-santorini",
-      "description": "The iconic white and blue buildings of Santorini overlooking the sea.",
-      "imageUrl": "https://picsum.photos/seed/santorini/600/400",
-      "imageHint": "santorini greece"
-    },
-    {
-      "id": "package-safari",
-      "description": "Elephants walking across the plains on an African safari.",
-      "imageUrl": "https://picsum.photos/seed/safari/600/400",
-      "imageHint": "african safari"
+      "id": "package-shimla",
+      "description": "A scenic view of the hills in Shimla.",
+      "imageUrl": "https://picsum.photos/seed/shimla/600/400",
+      "imageHint": "shimla hills"
     },
     {
       "id": "accom-maldives",
@@ -57,31 +45,31 @@
     {
       "id": "vehicle-sedan",
       "description": "A modern 5-seater sedan car.",
-      "imageUrl": "https://picsum.photos/seed/new-sedan/600/400",
+      "imageUrl": "https://picsum.photos/seed/sedan-car/600/400",
       "imageHint": "sedan car"
     },
     {
       "id": "vehicle-innova",
       "description": "A 7-seater Innova MPV.",
-      "imageUrl": "https://picsum.photos/seed/new-innova/600/400",
+      "imageUrl": "https://picsum.photos/seed/suv-car/600/400",
       "imageHint": "suv car"
     },
     {
       "id": "vehicle-ertiga",
       "description": "An 8-seater Ertiga MPV.",
-      "imageUrl": "https://picsum.photos/seed/new-ertiga/600/400",
+      "imageUrl": "https://picsum.photos/seed/minivan-car/600/400",
       "imageHint": "minivan car"
     },
     {
       "id": "vehicle-tempo-12",
       "description": "A 12-seater Tempo Traveller van.",
-      "imageUrl": "https://picsum.photos/seed/new-tempo12/600/400",
+      "imageUrl": "https://picsum.photos/seed/white-van/600/400",
       "imageHint": "white van"
     },
     {
       "id": "vehicle-tempo-17",
       "description": "A 17-seater Tempo Traveller van.",
-      "imageUrl": "https://picsum.photos/seed/new-tempo17/600/400",
+      "imageUrl": "https://picsum.photos/seed/large-van/600/400",
       "imageHint": "large van"
     }
   ]
