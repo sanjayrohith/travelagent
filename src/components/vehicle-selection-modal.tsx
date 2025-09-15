@@ -1,5 +1,7 @@
+"use client";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { vehicles } from "@/lib/data";
 import VehicleCard from "@/components/vehicle-card";
 import type { BookingItem } from "@/app/page";
@@ -18,23 +20,24 @@ export default function VehicleSelectionModal({ isOpen, onOpenChange, onBookNow 
           <DialogTitle className="font-headline">Select a Vehicle</DialogTitle>
           <DialogDescription>Swipe to see available cars for your trip.</DialogDescription>
         </DialogHeader>
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-2">
-            {vehicles.map((vehicle) => (
-              <CarouselItem key={vehicle.id} className="pl-6 basis-full">
-                <div className="p-1">
-                  <VehicleCard vehicle={vehicle} onBookNow={onBookNow} />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          {/* Mobile carousel doesn't need prev/next buttons */}
-        </Carousel>
+        <div className="p-4">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {vehicles.map((vehicle) => (
+                <CarouselItem key={vehicle.id} className="basis-full">
+                  <div className="p-1">
+                    <VehicleCard vehicle={vehicle} onBookNow={onBookNow} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
       </DialogContent>
     </Dialog>
   );
