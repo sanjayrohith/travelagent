@@ -6,6 +6,8 @@ import PackagesSection from "@/components/sections/packages";
 import ContactSection from "@/components/sections/contact";
 import BookingModal from "@/components/booking-modal";
 import VehiclesSection from "@/components/sections/vehicles";
+import { useIsMobile } from "@/hooks/use-mobile";
+import VehicleSelectionModal from "@/components/vehicle-selection-modal";
 
 export type BookingItem = {
   id: string;
@@ -14,35 +16,51 @@ export type BookingItem = {
 };
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [vehicleModalOpen, setVehicleModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<BookingItem | null>(null);
   const [showVehicles, setShowVehicles] = useState(false);
   const vehiclesSectionRef: RefObject<HTMLElement> = useRef(null);
+  const isMobile = useIsMobile();
 
 
   const handleBookNow = (item: BookingItem) => {
     setSelectedItem(item);
-    setModalOpen(true);
+    if (isMobile) {
+      setVehicleModalOpen(false);
+    }
+    setBookingModalOpen(true);
   };
 
   const handlePackageSelect = () => {
-    setShowVehicles(true);
-    setTimeout(() => {
-      vehiclesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    if (isMobile) {
+      setVehicleModalOpen(true);
+    } else {
+      setShowVehicles(true);
+      setTimeout(() => {
+        vehiclesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   return (
     <>
       <HeroSection />
       <PackagesSection onSelectPackage={handlePackageSelect} />
-      {showVehicles && <VehiclesSection ref={vehiclesSectionRef} onBookNow={handleBookNow} />}
+      {showVehicles && !isMobile && <VehiclesSection ref={vehiclesSectionRef} onBookNow={handleBookNow} />}
       <ContactSection />
       <BookingModal
-        isOpen={modalOpen}
-        onOpenChange={setModalOpen}
+        isOpen={bookingModalOpen}
+        onOpenChange={setBookingModalOpen}
         item={selectedItem}
       />
+      {isMobile && (
+        <VehicleSelectionModal
+            isOpen={vehicleModalOpen}
+            onOpenChange={setVehicleModalOpen}
+            onBookNow={handleBookNow}
+        />
+      )}
     </>
   );
 }
