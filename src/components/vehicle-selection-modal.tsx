@@ -13,8 +13,8 @@ type VehicleSelectionModalProps = {
 export default function VehicleSelectionModal({ isOpen, onOpenChange, onBookNow }: VehicleSelectionModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[90vw] w-full p-4 rounded-lg">
-        <DialogHeader className="px-2">
+      <DialogContent className="max-w-[90vw] w-full p-0 rounded-lg border-0">
+        <DialogHeader className="p-4 pb-0">
           <DialogTitle className="font-headline">Select a Vehicle</DialogTitle>
           <DialogDescription>Swipe to see available cars for your trip.</DialogDescription>
         </DialogHeader>
@@ -26,15 +26,14 @@ export default function VehicleSelectionModal({ isOpen, onOpenChange, onBookNow 
         >
           <CarouselContent className="-ml-2">
             {vehicles.map((vehicle) => (
-              <CarouselItem key={vehicle.id} className="pl-4 basis-3/4 sm:basis-1/2">
+              <CarouselItem key={vehicle.id} className="pl-6 basis-full">
                 <div className="p-1">
                   <VehicleCard vehicle={vehicle} onBookNow={onBookNow} />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex"/>
+          {/* Mobile carousel doesn't need prev/next buttons */}
         </Carousel>
       </DialogContent>
     </Dialog>
