@@ -1,3 +1,58 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-banner",
+      "description": "A stunning view of a tropical beach with turquoise water and a beautiful sunset.",
+      "imageUrl": "https://picsum.photos/seed/hero-banner/1920/1080",
+      "imageHint": "tropical beach"
+    },
+    {
+      "id": "package-paris",
+      "description": "The Eiffel Tower in Paris at sunset.",
+      "imageUrl": "https://picsum.photos/seed/paris/600/400",
+      "imageHint": "eiffel tower"
+    },
+    {
+      "id": "package-tokyo",
+      "description": "A bustling street in Tokyo at night with neon signs.",
+      "imageUrl": "https://picsum.photos/seed/tokyo/600/400",
+      "imageHint": "tokyo street"
+    },
+    {
+      "id": "package-santorini",
+      "description": "The iconic white and blue buildings of Santorini overlooking the sea.",
+      "imageUrl": "https://picsum.photos/seed/santorini/600/400",
+      "imageHint": "santorini greece"
+    },
+    {
+      "id": "package-safari",
+      "description": "Elephants walking across the plains on an African safari.",
+      "imageUrl": "https://picsum.photos/seed/safari/600/400",
+      "imageHint": "african safari"
+    },
+    {
+      "id": "accom-maldives",
+      "description": "An overwater bungalow in the Maldives with crystal clear water.",
+      "imageUrl": "https://picsum.photos/seed/maldives/600/400",
+      "imageHint": "maldives bungalow"
+    },
+    {
+      "id": "accom-alps",
+      "description": "A cozy chalet in the Swiss Alps covered in snow.",
+      "imageUrl": "https://picsum.photos/seed/alps/600/400",
+      "imageHint": "alps chalet"
+    },
+    {
+      "id": "accom-kyoto",
+      "description": "A traditional Japanese Ryokan with a serene garden.",
+      "imageUrl": "https://picsum.photos/seed/kyoto/600/400",
+      "imageHint": "kyoto ryokan"
+    },
+    {
+      "id": "accom-bali",
+      "description": "A luxurious jungle villa in Bali with an infinity pool.",
+      "imageUrl": "https://picsum.photos/seed/bali/600/400",
+      "imageHint": "bali villa"
+    }
+  ]
 }
