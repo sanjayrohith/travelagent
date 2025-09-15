@@ -1,7 +1,8 @@
-# Settings to manage and configure a Firebase App Hosting backend.
-# https://firebase.google.com/docs/app-hosting/configure
+## Deployment config placeholder (platform-agnostic)
+# This project does not rely on Firebase App Hosting.
+# Remove this file or adapt it for your chosen platform.
 
-runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
-  maxInstances: 1
+# Example placeholder keys to avoid breaking tools that expect this file:
+app:
+  name: wanderlust-packages
+  runtime: nodejs

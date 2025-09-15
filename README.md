@@ -1,6 +1,6 @@
 # Wanderlust Packages
 
-Modern travel packages site built with Next.js, Tailwind CSS, Radix UI, and Genkit (Google AI), ready for Firebase App Hosting.
+Modern travel packages site built with Next.js, Tailwind CSS, Radix UI, and Genkit (Google AI).
 
 — Showcase curated trips, accommodations, and vehicles, collect inquiries, and use AI to pre-check image quality before publishing.
 
@@ -11,7 +11,6 @@ Modern travel packages site built with Next.js, Tailwind CSS, Radix UI, and Genk
 - Booking/inquiry flow with pre-filled context
 - Image Quality Assurance (AI) for admins at `/admin/image-qa`
 - Type-safe server actions and flows via Genkit + Google AI
-- Firebase App Hosting config included (`apphosting.yaml`)
 
 ## Tech Stack
 
@@ -20,7 +19,7 @@ Modern travel packages site built with Next.js, Tailwind CSS, Radix UI, and Genk
 - Charts/UX: Recharts, Embla Carousel
 - Forms & Validation: React Hook Form, Zod
 - AI: Genkit + @genkit-ai/googleai (Gemini 2.5 Flash)
-- Platform: Firebase App Hosting
+ 
 
 ## Quick Start
 
@@ -86,30 +85,26 @@ src/
 	lib/                      # Data, placeholders, utils
 docs/
 	blueprint.md              # Design and feature blueprint
-apphosting.yaml             # Firebase App Hosting config
+ 
 ```
 
 ## Image Quality Assurance (AI)
 
 The admin can upload an image at `/admin/image-qa`. The flow analyzes clarity, composition, relevance, and lighting, returning a verdict and reason if flagged. This uses Genkit with the Google AI plugin and the `GOOGLE_API_KEY` runtime environment variable.
 
-## Deployment (Firebase App Hosting)
+## Deployment
 
-This repo includes `apphosting.yaml` for Firebase App Hosting. High-level steps:
+Choose your preferred platform. Two common options:
 
-1) Install Firebase CLI and sign in
+- Vercel: Import the repo, set `GOOGLE_API_KEY` in Project → Settings → Environment Variables, and deploy. Framework preset: Next.js.
+- Self-host/VM: Build and run
 
 ```bash
-npm install -g firebase-tools
-firebase login
+npm run build
+npm run start
 ```
 
-2) Create/Select a Firebase project and connect it in your repo (via Firebase Console → App Hosting) and set required environment variables (e.g., `GOOGLE_API_KEY`).
-
-3) Configure build (Next.js) and deploy from the console or CI. See official docs:
-https://firebase.google.com/docs/app-hosting/configure
-
-If you prefer, you can also deploy to other platforms (e.g., Vercel) without changes.
+Serve behind a reverse proxy (Nginx/Caddy) and set `GOOGLE_API_KEY` in your environment.
 
 ## Notes
 
