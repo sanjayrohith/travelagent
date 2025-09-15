@@ -6,12 +6,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import type { BookingItem } from "@/app/page";
 import { useEffect, useState } from "react";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 type BookingModalProps = {
   isOpen: boolean;
@@ -30,7 +34,6 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Basic client-side validation
     const form = event.currentTarget;
     const name = form.elements.namedItem('name') as HTMLInputElement;
     const email = form.elements.namedItem('email') as HTMLInputElement;
@@ -47,18 +50,19 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="font-headline">Book Your Trip</DialogTitle>
+      <DialogContent className="sm:max-w-[480px]">
+        <DialogHeader className="text-center">
+          <DialogTitle className="font-headline text-2xl">Book Your Travel Package</DialogTitle>
           <DialogDescription>
-            Fill out the form below to inquire about "{item?.name}".
+            Complete the form below to inquire about <br />
+            <span className="font-semibold text-primary">{item?.name}</span>
           </DialogDescription>
         </DialogHeader>
         <form
-          action="https://formsubmit.co/your-email@wanderlust.com" // IMPORTANT: Replace with your email address
+          action="https://formsubmit.co/your-email@wanderlust.com"
           method="POST"
           onSubmit={handleSubmit}
-          className="grid gap-4 py-4"
+          className="grid gap-6 pt-4"
         >
           {/* FormSubmit settings */}
           <input type="hidden" name="_subject" value={`New Booking Inquiry: ${item?.name}`} />
@@ -68,21 +72,37 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
           {/* Form fields */}
           <input type="hidden" name="Inquiry Item" value={`${item?.type}: ${item?.name} (ID: ${item?.id})`} />
           
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="name" className="text-right">Name</label>
-            <Input id="name" name="name" className="col-span-3" required />
+          <div className="grid gap-2">
+            <Label htmlFor="name">Full Name *</Label>
+            <Input id="name" name="name" placeholder="Enter your full name" required />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="email" className="text-right">Email</label>
-            <Input id="email" name="email" type="email" className="col-span-3" required />
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email Address *</Label>
+            <Input id="email" name="email" type="email" placeholder="Enter your email address" required />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="phone" className="text-right">Phone</label>
-            <Input id="phone" name="phone" type="tel" className="col-span-3" />
+          <div className="grid gap-2">
+            <Label htmlFor="phone">Phone Number *</Label>
+            <Input id="phone" name="phone" type="tel" placeholder="Enter your phone number" required/>
           </div>
-          <Button type="submit" className="w-full mt-4 bg-accent hover:bg-accent/90">
-            Submit Inquiry
-          </Button>
+           <div className="grid gap-2">
+            <Label htmlFor="selected-package">Selected Package</Label>
+            <Input id="selected-package" name="selected-package" value={item?.name} readOnly className="bg-muted"/>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="message">Additional Message</Label>
+            <Textarea id="message" name="message" placeholder="Any special requests or questions..." />
+          </div>
+          
+          <DialogFooter className="gap-2 sm:justify-end mt-4">
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button type="submit" className="bg-accent hover:bg-accent/90">
+              Send Inquiry
+            </Button>
+          </DialogFooter>
         </form>
       </DialogContent>
     </Dialog>
