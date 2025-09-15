@@ -17,7 +17,7 @@ export default function PackageDetailsModal({ isOpen, onOpenChange, package: pkg
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md w-full p-0 rounded-lg">
+      <DialogContent className="max-w-md w-[90vw] p-0 rounded-lg">
         <DialogHeader className="p-6 pb-2">
           <DialogTitle className="font-headline text-2xl">{pkg.title}</DialogTitle>
           <DialogDescription>Swipe to see the day-by-day itinerary.</DialogDescription>
@@ -28,16 +28,16 @@ export default function PackageDetailsModal({ isOpen, onOpenChange, package: pkg
               {pkg.itinerary.map((day) => (
                 <CarouselItem key={day.day}>
                   <div className="p-1">
-                    <div className="rounded-lg border bg-card text-card-foreground p-6">
+                    <div className="rounded-lg border bg-card text-card-foreground p-6 h-48 flex flex-col justify-center">
                       <h3 className="font-headline text-lg font-semibold">Day {day.day}: {day.title}</h3>
-                      <p className="text-muted-foreground mt-2">{day.activities}</p>
+                      <p className="text-muted-foreground mt-2 text-sm">{day.activities}</p>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-[-1.5rem] top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-[-1.5rem] top-1/2 -translate-y-1/2" />
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
           </Carousel>
         </div>
         <DialogFooter className="p-6 pt-2">

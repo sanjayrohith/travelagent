@@ -50,7 +50,7 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[480px]">
+      <DialogContent className="sm:max-w-md w-[90vw] rounded-lg">
         <DialogHeader className="text-center">
           <DialogTitle className="font-headline text-2xl">Book Your Travel Package</DialogTitle>
           <DialogDescription>
@@ -62,7 +62,7 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
           action="https://formsubmit.co/your-email@wanderlust.com"
           method="POST"
           onSubmit={handleSubmit}
-          className="grid gap-6 pt-4"
+          className="grid gap-4 pt-4"
         >
           {/* FormSubmit settings */}
           <input type="hidden" name="_subject" value={`New Booking Inquiry: ${item?.name}`} />
@@ -72,23 +72,23 @@ export default function BookingModal({ isOpen, onOpenChange, item }: BookingModa
           {/* Form fields */}
           <input type="hidden" name="Inquiry Item" value={`${item?.type}: ${item?.name} (ID: ${item?.id})`} />
           
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <Label htmlFor="name">Full Name *</Label>
             <Input id="name" name="name" placeholder="Enter your full name" required />
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <Label htmlFor="email">Email Address *</Label>
             <Input id="email" name="email" type="email" placeholder="Enter your email address" required />
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <Label htmlFor="phone">Phone Number *</Label>
             <Input id="phone" name="phone" type="tel" placeholder="Enter your phone number" required/>
           </div>
-           <div className="grid gap-2">
+           <div className="grid gap-1.5">
             <Label htmlFor="selected-package">Selected Package</Label>
-            <Input id="selected-package" name="selected-package" value={item?.name} readOnly className="bg-muted"/>
+            <Input id="selected-package" name="selected-package" value={item?.name || ''} readOnly className="bg-muted"/>
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <Label htmlFor="message">Additional Message</Label>
             <Textarea id="message" name="message" placeholder="Any special requests or questions..." />
           </div>
