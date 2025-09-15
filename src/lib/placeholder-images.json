@@ -81,20 +81,20 @@
     {
       "id": "vehicle-sedan",
       "description": "A modern 5-seater sedan car.",
-      "imageUrl": "https://picsum.photos/seed/sedan-car/600/400",
+      "imageUrl": "https://images.drivespark.com/webp/fit-in/640x480/car-image/car/3380673-hyundai_verna.jpg",
       "imageHint": "sedan car"
     },
     {
       "id": "vehicle-innova",
-      "description": "A 7-seater Innova MPV.",
-      "imageUrl": "https://picsum.photos/seed/suv-car/600/400",
-      "imageHint": "suv car"
+  "description": "A 7-seater Innova MPV.",
+  "imageUrl": "https://images.autox.com/uploads/cars/2022/11/toyota-innova-hycross-500x261.jpg",
+  "imageHint": "suv car"
     },
     {
       "id": "vehicle-ertiga",
-      "description": "An 8-seater Ertiga MPV.",
-      "imageUrl": "https://picsum.photos/seed/minivan-car/600/400",
-      "imageHint": "minivan car"
+  "description": "An 8-seater Ertiga MPV.",
+  "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBT1LwBhCAu2Zqfzq-UDduhLDmA3IW-lWAg&s",
+  "imageHint": "minivan car"
     },
     {
       "id": "vehicle-tempo-12",

@@ -23,7 +23,13 @@ export default function VehicleCard({ vehicle, onBookNow }: VehicleCardProps) {
               src={image.imageUrl}
               alt={vehicle.name}
               fill
-              className="object-cover"
+              className={
+                vehicle.imageId === "vehicle-ertiga"
+                  ? "object-contain w-[calc(100%+10px)] h-[calc(100%+10px)]"
+                  : vehicle.imageId === "vehicle-innova"
+                  ? "object-contain w-[calc(100%-20px)] h-[calc(100%-20px)]"
+                  : "object-cover"
+              }
               data-ai-hint={image.imageHint}
             />
           )}
