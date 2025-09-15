@@ -6,11 +6,12 @@ import PackagesSection from "@/components/sections/packages";
 import AccommodationsSection from "@/components/sections/accommodations";
 import ContactSection from "@/components/sections/contact";
 import BookingModal from "@/components/booking-modal";
+import VehiclesSection from "@/components/sections/vehicles";
 
 export type BookingItem = {
   id: string;
   name: string;
-  type: 'Package' | 'Accommodation';
+  type: 'Package' | 'Accommodation' | 'Vehicle';
 };
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       <HeroSection />
       <PackagesSection onBookNow={handleBookNow} />
       <AccommodationsSection onBookNow={handleBookNow} />
+      <VehiclesSection onBookNow={handleBookNow} />
       <ContactSection />
       <BookingModal
         isOpen={modalOpen}

@@ -15,6 +15,14 @@ export type Accommodation = {
   amenities: string[];
 };
 
+export type Vehicle = {
+  id: string;
+  imageId: string;
+  name: string;
+  capacity: string;
+  description: string;
+};
+
 export const packages: Package[] = [
   {
     id: 'pkg1',
@@ -80,3 +88,41 @@ export const accommodations: Accommodation[] = [
     amenities: ['Infinity Pool', 'Yoga Deck', 'Lush Gardens', 'Open-air Living'],
   },
 ];
+
+export const vehicles: Vehicle[] = [
+    {
+      id: 'veh1',
+      imageId: 'vehicle-sedan',
+      name: 'Sedan',
+      capacity: '5 Seater',
+      description: 'Comfortable and stylish sedan, perfect for small families or couples.',
+    },
+    {
+      id: 'veh2',
+      imageId: 'vehicle-innova',
+      name: 'Innova',
+      capacity: '7 Seater',
+      description: 'A spacious and reliable choice for larger families or groups.',
+    },
+    {
+      id: 'veh3',
+      imageId: 'vehicle-ertiga',
+      name: 'Ertiga',
+      capacity: '8 Seater',
+      description: 'A versatile and spacious MPV for comfortable group travel.',
+    },
+    {
+      id: 'veh4',
+      imageId: 'vehicle-tempo-12',
+      name: 'Tempo Traveller',
+      capacity: '12 Seater',
+      description: 'Ideal for medium-sized groups, offering ample space and comfort.',
+    },
+     {
+      id: 'veh5',
+      imageId: 'vehicle-tempo-17',
+      name: 'Tempo Traveller',
+      capacity: '17 Seater',
+      description: 'The perfect solution for large group travel, ensuring everyone travels together.',
+    },
+  ];

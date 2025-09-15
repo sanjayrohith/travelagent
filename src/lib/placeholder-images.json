@@ -53,6 +53,36 @@
       "description": "A luxurious jungle villa in Bali with an infinity pool.",
       "imageUrl": "https://picsum.photos/seed/bali/600/400",
       "imageHint": "bali villa"
+    },
+    {
+      "id": "vehicle-sedan",
+      "description": "A modern 5-seater sedan car.",
+      "imageUrl": "https://picsum.photos/seed/sedan/600/400",
+      "imageHint": "sedan car"
+    },
+    {
+      "id": "vehicle-innova",
+      "description": "A 7-seater Innova MPV.",
+      "imageUrl": "https://picsum.photos/seed/innova/600/400",
+      "imageHint": "suv car"
+    },
+    {
+      "id": "vehicle-ertiga",
+      "description": "An 8-seater Ertiga MPV.",
+      "imageUrl": "https://picsum.photos/seed/ertiga/600/400",
+      "imageHint": "minivan car"
+    },
+    {
+      "id": "vehicle-tempo-12",
+      "description": "A 12-seater Tempo Traveller van.",
+      "imageUrl": "https://picsum.photos/seed/tempo12/600/400",
+      "imageHint": "white van"
+    },
+    {
+      "id": "vehicle-tempo-17",
+      "description": "A 17-seater Tempo Traveller van.",
+      "imageUrl": "https://picsum.photos/seed/tempo17/600/400",
+      "imageHint": "large van"
     }
   ]
 }
