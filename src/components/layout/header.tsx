@@ -1,104 +1,96 @@
-"use client";
+"use client"; // ensure header is a client component
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Mountain } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Packages", href: "#packages" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Packages", href: "/#packages" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("#home");
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-
-      const sections = navItems.map((item) => document.querySelector(item.href));
-      let currentSection = "#home";
-
-      for (const section of sections) {
-        if (section) {
-          const sectionTop = (section as HTMLElement).offsetTop - 100;
-          if (window.scrollY >= sectionTop) {
-            currentSection = `#${section.id}`;
-          }
-        }
-      }
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-background/80 shadow-md backdrop-blur-sm" : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-  <Link href="/" className="flex items-center gap-2">
-          <Mountain className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold">Wanderlust</span>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/50">
+      <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-3">
+        {/* Logo/brand */}
+        <Link
+          href="/"
+          className={`mr-auto select-none font-semibold tracking-tight ${
+            isScrolled ? "hidden sm:block" : ""
+          }`}
+        >
+          Wanderlust
         </Link>
 
+        {/* Mobile: dropdown menu (replaces sheet) */}
+  <div className="ml-auto sm:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                aria-label="Open menu"
+                variant="outline"
+                size="icon"
+                className="h-10 w-10 rounded-full"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              side="bottom"
+              align="end"
+              className="w-48"
+              collisionPadding={8}
+              sideOffset={8}
+            >
+              <DropdownMenuItem asChild>
+                <Link href="/">Home</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/#packages">Packages</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/#contact">Contact</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
+        {/* Desktop nav (unchanged) */}
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                activeSection === item.href ? "text-primary font-bold" : "text-muted-foreground"
-              )}
+              className="text-sm font-medium transition-colors hover:text-primary"
             >
               {item.name}
             </Link>
           ))}
         </nav>
-
-        <div className="md:hidden">
-          <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 p-4">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                  <Mountain className="h-6 w-6 text-primary" />
-                  <span className="font-headline text-xl font-bold">Wanderlust</span>
-                </Link>
-                <nav className="grid gap-2">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-          href={item.name === "Home" ? "/" : item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
       </div>
     </header>
   );
