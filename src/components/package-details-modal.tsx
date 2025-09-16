@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+// Removed carousel imports
 import type { Package, PackageDay } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -45,24 +45,14 @@ export default function PackageDetailsModal({ isOpen, onOpenChange, package: pkg
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md w-[90vw] p-0 rounded-lg">
-        <DialogHeader className="p-6 pb-2">
+        <div className="p-6 pb-2">
           <DialogTitle className="font-headline text-2xl">{pkg.title}</DialogTitle>
-          <DialogDescription>Swipe to see the day-by-day itinerary.</DialogDescription>
-        </DialogHeader>
-        <div className="px-6 py-4">
-          <Carousel>
-            <CarouselContent>
-              {pkg.itinerary.map((day) => (
-                <CarouselItem key={day.day}>
-                  <div className="p-1">
-                    <ItineraryDay day={day} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
-          </Carousel>
+          <DialogDescription>Scroll to see the day-by-day itinerary.</DialogDescription>
+        </div>
+        <div className="px-6 py-4 max-h-[60vh] overflow-y-auto space-y-6">
+          {pkg.itinerary.map((day) => (
+            <ItineraryDay key={day.day} day={day} />
+          ))}
         </div>
         <DialogFooter className="p-6 pt-2">
           <Button onClick={onBookNow} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
