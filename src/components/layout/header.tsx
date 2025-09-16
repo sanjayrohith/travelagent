@@ -49,7 +49,7 @@ export default function Header() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2">
+  <Link href="/" className="flex items-center gap-2">
           <Mountain className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl font-bold">Wanderlust</span>
         </Link>
@@ -79,7 +79,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="grid gap-4 p-4">
-                <Link href="#home" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+        <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                   <Mountain className="h-6 w-6 text-primary" />
                   <span className="font-headline text-xl font-bold">Wanderlust</span>
                 </Link>
@@ -87,7 +87,7 @@ export default function Header() {
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
-                      href={item.href}
+          href={item.name === "Home" ? "/" : item.href}
                       className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                       onClick={() => setMobileMenuOpen(false)}
                     >
