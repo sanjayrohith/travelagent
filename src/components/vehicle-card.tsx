@@ -12,11 +12,18 @@ type VehicleCardProps = {
   compact?: boolean;
 };
 
-export default function VehicleCard({ vehicle, onBookNow, compact = false }: VehicleCardProps) {
+export default function VehicleCard({ vehicle, onBookNow, compact = false }: Readonly<VehicleCardProps>) {
   const image = PlaceHolderImages.find((img) => img.id === vehicle.imageId);
+  const imgClass = (() => {
+    if (compact) return "object-contain";
+    if (vehicle.imageId === "vehicle-tempo-12" || vehicle.imageId === "vehicle-tempo-17" || vehicle.imageId === "vehicle-sedan") return "object-contain";
+    if (vehicle.imageId === "vehicle-ertiga") return "object-contain w-[calc(100%+10px)] h-[calc(100%+10px)]";
+    if (vehicle.imageId === "vehicle-innova") return "object-contain w-[calc(100%-20px)] h-[calc(100%-20px)]";
+    return "object-cover";
+  })();
 
   return (
-    <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg">
+  <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg">
       <CardHeader className="p-0">
         <div className={`relative w-full ${compact ? "h-32" : "h-48"}`}>
           {image && (
@@ -24,26 +31,16 @@ export default function VehicleCard({ vehicle, onBookNow, compact = false }: Veh
               src={image.imageUrl}
               alt={vehicle.name}
               fill
-              className={
-                compact
-                  ? "object-contain"
-                  : vehicle.imageId === "vehicle-tempo-12" || vehicle.imageId === "vehicle-tempo-17" || vehicle.imageId === "vehicle-sedan"
-                  ? "object-contain"
-                  : vehicle.imageId === "vehicle-ertiga"
-                  ? "object-contain w-[calc(100%+10px)] h-[calc(100%+10px)]"
-                  : vehicle.imageId === "vehicle-innova"
-                  ? "object-contain w-[calc(100%-20px)] h-[calc(100%-20px)]"
-                  : "object-cover"
-              }
+              className={imgClass}
               data-ai-hint={image.imageHint}
             />
           )}
         </div>
       </CardHeader>
       <CardContent className={`flex-grow ${compact ? "p-3" : "p-4"}`}>
-        <CardTitle className={`mb-2 font-headline ${compact ? "text-base" : "text-xl"}`}>{vehicle.name}</CardTitle>
-        <CardDescription className={`${compact ? "text-sm" : ""}`}>{vehicle.description}</CardDescription>
-        <div className={`mt-3 flex items-center gap-2 ${compact ? "text-xs" : "text-sm"} text-muted-foreground`}>
+        <CardTitle className={`mb-1 font-headline ${compact ? "text-base" : "text-xl"}`}>{vehicle.name}</CardTitle>
+        <CardDescription className={`${compact ? "text-xs" : ""}`}>{vehicle.description}</CardDescription>
+        <div className={`mt-2 flex items-center gap-2 ${compact ? "text-xs" : "text-sm"} text-muted-foreground`}>
             <Users className="h-4 w-4" />
             <span>{vehicle.capacity}</span>
         </div>

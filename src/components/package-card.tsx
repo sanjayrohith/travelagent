@@ -50,8 +50,8 @@ export default function PackageCard({ package: pkg, onSelectPackage, onSeeDetail
           <Eye className="mr-2 h-4 w-4" />
           See Details
         </Button>
-        <Button
-          onClick={onSelectPackage}
+           <Button
+             onClick={onSelectPackage}
           className="bg-accent text-accent-foreground hover:bg-accent/90"
         >
           Explore
